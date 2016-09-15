@@ -14,8 +14,6 @@ var Player = function() {
 	
 	this.velocity = new Vector2();
 	
-	this.falling = true;
-	this.jumping = false;
 };
 
 
@@ -25,6 +23,11 @@ Player.prototype.update = function(deltaTime)
 	var right = false;
 	var up = false;
 	var down = false;
+	var w = false;
+	var a = false;
+	var s = false;
+	var d = false;
+	var space = false;
 	
 	// check keypress events
 	if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true) 
@@ -32,9 +35,19 @@ Player.prototype.update = function(deltaTime)
 		left = true;
 	}
 	
+	if(keyboard.isKeyDown(keyboard.KEY_A) == true) 
+	{
+		a = true;
+	}
+	
 	if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true) 
 	{
 		right = true;
+	}
+	
+	if(keyboard.isKeyDown(keyboard.KEY_D) == true) 
+	{
+		d = true;
 	}
 	
 	if(keyboard.isKeyDown(keyboard.KEY_UP) == true)
@@ -43,9 +56,27 @@ Player.prototype.update = function(deltaTime)
 		this.image.src = "Rocket2.png";
 	}
 	
+	if(keyboard.isKeyDown(keyboard.KEY_W) == true)
+	{
+		w = true;
+		this.image.src = "Rocket2.png";
+	}
+	
 	if(keyboard.isKeyDown(keyboard.KEY_DOWN) == true)
 	{
 		down = true;
+		this.image.src = "Rocket1.png";
+	}
+		
+		if(keyboard.isKeyDown(keyboard.KEY_S) == true)
+	{
+		s = true;
+		this.image.src = "Rocket1.png";
+	}
+	
+		if(keyboard.isKeyDown(keyboard.KEY_SPACE) == true)
+	{
+		space = true;
 	}
 		
 	}
