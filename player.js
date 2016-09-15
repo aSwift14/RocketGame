@@ -65,7 +65,7 @@ Player.prototype.update = function(deltaTime)
 		this.position.x += PLAYER_SPEED;
 	}
 	if (up == true) {
-		this.position.y -= PLAYER_SPEED;
+		this.position.y -= PLAYER_SPEED * 2;
 	}
 	if (down == true) {
 		this.position.y += PLAYER_SPEED;
