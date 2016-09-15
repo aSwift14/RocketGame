@@ -16,6 +16,8 @@ var Player = function() {
 	
 };
 
+var positionX = 200;
+var positionY = 200;
 
 Player.prototype.update = function(deltaTime)
 {
@@ -28,7 +30,7 @@ Player.prototype.update = function(deltaTime)
 	var s = false;
 	var d = false;
 	var space = false;
-	
+
 	// check keypress events
 	if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true) 
 	{
@@ -54,6 +56,7 @@ Player.prototype.update = function(deltaTime)
 	{
 		up = true;
 		this.image.src = "Rocket2.png";
+		
 	}
 	
 	if(keyboard.isKeyDown(keyboard.KEY_W) == true)
@@ -78,6 +81,26 @@ Player.prototype.update = function(deltaTime)
 	{
 		space = true;
 	}
+	
+	
+	
+	var ddx = 0; // acceleration
+	
+	if (left)
+		ddx = ddx; // player wants to go left
+		
+	if (a)
+		ddx = ddx; // player wants to go left 2
+	
+	if (right)
+		ddx = ddx; // player wants to go right
+		
+	if (d)
+		ddx = ddx; // player wants to go right 2
+		
+		// calculate the new position and velocity:
+	this.position.y = Math.floor(this.position.y + (deltaTime * this.velocity.y));
+	this.position.x = Math.floor(this.position.x + (deltaTime * this.velocity.x));
 		
 	}
 	
