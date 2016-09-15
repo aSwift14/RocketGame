@@ -59,7 +59,7 @@ Player.prototype.update = function(deltaTime)
 		this.position.y += FALLING_SPEED;
 	}
 	
-//Add Player Speed
+//Add Player Speed3
 	if (left == true) {
 		this.position.x -= PLAYER_SPEED;
 	}
