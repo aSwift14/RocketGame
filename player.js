@@ -25,17 +25,12 @@ Player.prototype.update = function(deltaTime)
 	var right = false;
 	var up = false;
 	var down = false;
-	var w = false;
-	var a = false;
-	var s = false;
-	var d = false;
 	var space = false;
 
 	// check keypress events
 	if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true) 
 	{
 		left = true;
-		player.positionX += 1;
 	}
 		
 	if(keyboard.isKeyDown(keyboard.KEY_RIGHT == true) 
@@ -46,7 +41,6 @@ Player.prototype.update = function(deltaTime)
 	{
 		up = true;
 		this.image.src = "Rocket2.png";
-		
 	}
 		
 	if(keyboard.isKeyDown(keyboard.KEY_DOWN) == true)
@@ -59,6 +53,7 @@ Player.prototype.update = function(deltaTime)
 	{
 		space = true;
 	}
+	
 	if (left == true) {
 		this.position.x += PLAYER_SPEED;
 	}
@@ -69,6 +64,8 @@ Player.prototype.update = function(deltaTime)
 	this.position.x = Math.floor(this.position.x + (deltaTime * this.velocity.x));
 		
 	}
+	
+	
 	
 Player.prototype.draw = function()
 {
