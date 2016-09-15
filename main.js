@@ -80,6 +80,8 @@ function runMainMenu(deltaTime) {
 
 }
 function runGame(deltaTime) {
+    player.update(deltaTime);
+    player.draw();
 }
 function runGameOver(deltaTime) {
 }
