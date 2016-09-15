@@ -71,6 +71,11 @@ function runMainMenu(deltaTime) {
 	context.fillStyle = "#000";
 	context.font = "16px Arial";
 	context.fillText("Press ENTER to Start!", 140, 328);
+
+    if (keyboard.isKeyDown(keyboard.KEY_ESCAPE) == true)
+    {
+        gameState = STATE_GAME;
+    }
 }
 function runGame(deltaTime) {
 }
