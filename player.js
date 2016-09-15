@@ -32,28 +32,24 @@ Player.prototype.update = function(deltaTime)
 	var space = false;
 
 	// check keypress events
-	if(keyboard.isKeyDown(keyboard.KEY_LEFT) || if(keyboard.isKeyDown(keyboard.KEY_A) == true) 
+	if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true) 
 	{
 		left = true;
-		a = true;
 		player.positionX += 1;
 	}
 		
-	if(keyboard.isKeyDown(keyboard.KEY_RIGHT || if(keyboard.isKeyDown(keyboard.KEY_D) == true) 
+	if(keyboard.isKeyDown(keyboard.KEY_RIGHT == true) 
 	{
 		right = true;
-		d = true;
 	}
-		
-	if(keyboard.isKeyDown(keyboard.KEY_UP) || if(keyboard.isKeyDown(keyboard.KEY_W) == true)
+	if(keyboard.isKeyDown(keyboard.KEY_UP) == true)
 	{
 		up = true;
-		w = true;
 		this.image.src = "Rocket2.png";
 		
 	}
 		
-	if(keyboard.isKeyDown(keyboard.KEY_DOWN || if(keyboard.isKeyDown(keyboard.KEY_S) == true)
+	if(keyboard.isKeyDown(keyboard.KEY_DOWN) == true)
 	{
 		down = true;
 		this.image.src = "Rocket1.png";
