@@ -39,14 +39,11 @@ Player.prototype.update = function(deltaTime)
 	{
 		right = true;
 	}
-	if((keyboard.isKeyDown(keyboard.KEY_UP) == true)  || (keyboard.isKeyDown(keyboard.KEY_W) == true))
-	{ 
-	else 
-	{ 
-	this.image.src = "Rocket1.png";
-	}
+	if((keyboard.isKeyDown(keyboard.KEY_UP) == true)  || (keyboard.isKeyDown(keyboard.KEY_W) == true)) { 
 		up = true;
 		this.image.src = "Rocket2.png";	
+	} else { 
+	this.image.src = "Rocket1.png";
 	}
 		
 	if((keyboard.isKeyDown(keyboard.KEY_DOWN) == true)  || (keyboard.isKeyDown(keyboard.KEY_S) == true))
