@@ -2,6 +2,9 @@
 var Player = function() {
 	this.image = document.createElement("img");
 	
+	this.width = 159;
+	this.height = 163;
+	
 	this.image.src = "Rocket1.png";
 	
 };
@@ -35,11 +38,14 @@ Player.prototype.update = function(deltaTime)
 	{
 		down = true;
 	}
-	
-	
+		
 	}
-
+	
 Player.prototype.draw = function()
 {
-	
+	context.save();
+	context.translate(this.position.x, this.position.y);
+	context.rotate(this.rotation);
+	context.drawImage(this.image, -this.width/2, -this.height/2);
+	context.restore();
 }
