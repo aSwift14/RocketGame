@@ -23,6 +23,10 @@ var gameState = STATE_MENUSCREEN;
     //Timers
     var menuTimer = 3;
 
+//Game Variables
+var player = new Player();
+var keyboard = new Keyboard();
+
 //Get DeltaTime
 function getDeltaTime() {
 	endFrameMillis = startFrameMillis;
@@ -61,7 +65,6 @@ function run () {
 }
 
 function runMainMenu(deltaTime) {
-    console.log("am i working?");
     //Background
     context.fillStyle = "#ccc";
     context.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -80,6 +83,7 @@ function runMainMenu(deltaTime) {
 
 }
 function runGame(deltaTime) {
+    console.log("am i working?")
     player.update(deltaTime);
     player.draw();
 }
