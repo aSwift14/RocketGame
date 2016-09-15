@@ -63,6 +63,9 @@ Player.prototype.update = function(deltaTime)
 	{
 		space = true;
 	}
+	if (left == true) {
+		this.position.x += PLAYER_SPEED;
+	}
 	
 	
 		// calculate the new position and velocity:
