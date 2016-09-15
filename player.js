@@ -32,72 +32,39 @@ Player.prototype.update = function(deltaTime)
 	var space = false;
 
 	// check keypress events
-	if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true) 
+	if(keyboard.isKeyDown(keyboard.KEY_LEFT) || if(keyboard.isKeyDown(keyboard.KEY_A) == true) 
 	{
 		left = true;
-	}
-	
-	if(keyboard.isKeyDown(keyboard.KEY_A) == true) 
-	{
 		a = true;
+		player.positionX += 1;
 	}
-	
-	if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true) 
+		
+	if(keyboard.isKeyDown(keyboard.KEY_RIGHT || if(keyboard.isKeyDown(keyboard.KEY_D) == true) 
 	{
 		right = true;
-	}
-	
-	if(keyboard.isKeyDown(keyboard.KEY_D) == true) 
-	{
 		d = true;
 	}
-	
-	if(keyboard.isKeyDown(keyboard.KEY_UP) == true)
+		
+	if(keyboard.isKeyDown(keyboard.KEY_UP) || if(keyboard.isKeyDown(keyboard.KEY_W) == true)
 	{
 		up = true;
+		w = true;
 		this.image.src = "Rocket2.png";
 		
 	}
-	
-	if(keyboard.isKeyDown(keyboard.KEY_W) == true)
-	{
-		w = true;
-		this.image.src = "Rocket2.png";
-	}
-	
-	if(keyboard.isKeyDown(keyboard.KEY_DOWN) == true)
+		
+	if(keyboard.isKeyDown(keyboard.KEY_DOWN || if(keyboard.isKeyDown(keyboard.KEY_S) == true)
 	{
 		down = true;
 		this.image.src = "Rocket1.png";
 	}
-		
-		if(keyboard.isKeyDown(keyboard.KEY_S) == true)
-	{
-		s = true;
-		this.image.src = "Rocket1.png";
-	}
-	
+			
 		if(keyboard.isKeyDown(keyboard.KEY_SPACE) == true)
 	{
 		space = true;
 	}
 	
 	
-	
-	var ddx = 0; // acceleration
-	
-	if (left)
-		ddx = ddx; // player wants to go left
-		
-	if (a)
-		ddx = ddx; // player wants to go left 2
-	
-	if (right)
-		ddx = ddx; // player wants to go right
-		
-	if (d)
-		ddx = ddx; // player wants to go right 2
-		
 		// calculate the new position and velocity:
 	this.position.y = Math.floor(this.position.y + (deltaTime * this.velocity.y));
 	this.position.x = Math.floor(this.position.x + (deltaTime * this.velocity.x));
