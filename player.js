@@ -1,12 +1,21 @@
-
 var Player = function() {
 	this.image = document.createElement("img");
+
+	this.position = new Vector2();
+	this.position.set( SCREEN_WIDTH 281, SCREEN_HEIGHT 481, );
 	
 	this.width = 159;
 	this.height = 163;
 	
+	this.offset = new Vector2();
+	this.offset.set(-55,-87);
+	
 	this.image.src = "Rocket1.png";
 	
+	this.velocity = new Vector2();
+	
+	this.falling = true;
+	this.jumping = false;
 };
 
 
