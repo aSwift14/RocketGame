@@ -24,9 +24,11 @@ Player.prototype.update = function(deltaTime)
 	var left = false;
 	var right = false;
 	var up = false;
-	var down = false;
 	var space = false;
+	var falling;
 	var PLAYER_SPEED = 2;
+	var FALLING_SPEED = 2.7;
+	var ROCKET_SPEED = 1.5
 
 //Check if Key is Down
 	if((keyboard.isKeyDown(keyboard.KEY_LEFT) == true)  || (keyboard.isKeyDown(keyboard.KEY_A) == true))
@@ -39,22 +41,22 @@ Player.prototype.update = function(deltaTime)
 	{
 		right = true;
 	}
-	if((keyboard.isKeyDown(keyboard.KEY_UP) == true)  || (keyboard.isKeyDown(keyboard.KEY_W) == true)) { 
+	if ((keyboard.isKeyDown(keyboard.KEY_UP) == true) || (keyboard.isKeyDown(keyboard.KEY_W) == true)) {
 		up = true;
-		this.image.src = "Rocket2.png";	
-	} else { 
-	this.image.src = "Rocket1.png";
-	}
-		
-	if((keyboard.isKeyDown(keyboard.KEY_DOWN) == true)  || (keyboard.isKeyDown(keyboard.KEY_S) == true))
-	{
-		down = true;
+		this.image.src = "Rocket2.png";
+		falling = false;
+	} else {
 		this.image.src = "Rocket1.png";
+		falling = true;
 	}
-			
+				
 	if(keyboard.isKeyDown(keyboard.KEY_SPACE) == true)
 	{
 		space = true;
+	}
+
+	if (falling == true) {
+		this.position.y += FALLING_SPEED;
 	}
 	
 //Add Player Speed
@@ -65,24 +67,21 @@ Player.prototype.update = function(deltaTime)
 		this.position.x += PLAYER_SPEED;
 	}
 	if (up == true) {
-		this.position.y -= PLAYER_SPEED;
-	}
-	if (down == true) {
-		this.position.y += PLAYER_SPEED;
+		this.position.y -= PLAYER_SPEED * ROCKET_SPEED;
 	}
 	
 // Position Boundaries
 	if (this.position.x <= 0) {
-		this.position.x += PLAYER_SPEED;
+		this.position.x = 0;
 	}
 	if (this.position.x >= SCREEN_WIDTH) {
-		this.position.x -= PLAYER_SPEED;
+		this.position.x = SCREEN_WIDTH;
 	}
 	if (this.position.y <= 0) {
-		this.position.y += PLAYER_SPEED;
+		this.position.y = 0;
 	}
 	if (this.position.y >= SCREEN_HEIGHT) {
-		this.position.y -= PLAYER_SPEED;
+		this.position.y = SCREEN_HEIGHT;
 	}
 	
 	
