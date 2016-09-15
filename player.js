@@ -8,7 +8,7 @@ var Player = function() {
 	this.height = 163;
 	
 	this.offset = new Vector2();
-	this.offset.set(-55,-87);
+	this.offset.set(-159,-163);
 	
 	this.image.src = "Rocket1.png";
 	
@@ -25,42 +25,61 @@ Player.prototype.update = function(deltaTime)
 	var right = false;
 	var up = false;
 	var down = false;
-	var w = false;
-	var a = false;
-	var s = false;
-	var d = false;
 	var space = false;
+	var PLAYER_SPEED = 2;
 
-	// check keypress events
-	if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true) 
+//Check if Key is Down
+	if((keyboard.isKeyDown(keyboard.KEY_LEFT) == true)  || (keyboard.isKeyDown(keyboard.KEY_A) == true))
 	{
 		left = true;
 		player.positionX += 1;
 	}
 		
-	if(keyboard.isKeyDown(keyboard.KEY_RIGHT == true) 
+	if((keyboard.isKeyDown(keyboard.KEY_RIGHT) == true)  || (keyboard.isKeyDown(keyboard.KEY_D) == true)) 
 	{
 		right = true;
 	}
-	if(keyboard.isKeyDown(keyboard.KEY_UP) == true)
+	if((keyboard.isKeyDown(keyboard.KEY_UP) == true)  || (keyboard.isKeyDown(keyboard.KEY_W) == true))
 	{
 		up = true;
-		this.image.src = "Rocket2.png";
-		
+		this.image.src = "Rocket2.png";	
 	}
 		
-	if(keyboard.isKeyDown(keyboard.KEY_DOWN) == true)
+	if((keyboard.isKeyDown(keyboard.KEY_DOWN) == true)  || (keyboard.isKeyDown(keyboard.KEY_S) == true))
 	{
 		down = true;
 		this.image.src = "Rocket1.png";
 	}
 			
-		if(keyboard.isKeyDown(keyboard.KEY_SPACE) == true)
+	if(keyboard.isKeyDown(keyboard.KEY_SPACE) == true)
 	{
 		space = true;
 	}
+//Add Player Speed
 	if (left == true) {
+		this.position.x -= PLAYER_SPEED;
+	}
+	if (right == true) {
 		this.position.x += PLAYER_SPEED;
+	}
+	if (up == true) {
+		this.position.y -= PLAYER_SPEED;
+	}
+	if (down == true) {
+		this.position.y += PLAYER_SPEED;
+	}
+// Position Boundaries
+	if (this.position.x <= 0) {
+		this.position.x += PLAYER_SPEED;
+	}
+	if (this.position.x >= SCREEN_WIDTH) {
+		this.position.x -= PLAYER_SPEED;
+	}
+	if (this.position.y <= 0) {
+		this.position.y += PLAYER_SPEED;
+	}
+	if (this.position.y >= SCREEN_HEIGHT) {
+		this.position.y -= PLAYER_SPEED;
 	}
 	
 	
@@ -68,7 +87,7 @@ Player.prototype.update = function(deltaTime)
 	this.position.y = Math.floor(this.position.y + (deltaTime * this.velocity.y));
 	this.position.x = Math.floor(this.position.x + (deltaTime * this.velocity.x));
 		
-	}
+}
 	
 Player.prototype.draw = function()
 {
