@@ -20,6 +20,9 @@ var STATE_UPGRADEMENU = 3;
 
 var gameState = STATE_MENUSCREEN;
 
+    //Timers
+    var menuTimer = 3;
+
 //Get DeltaTime
 function getDeltaTime() {
 	endFrameMillis = startFrameMillis;
@@ -68,14 +71,13 @@ function runMainMenu(deltaTime) {
 	context.font = "24px Arial";
 	context.fillText("Rocket Game", 140, 300);
 
-	context.fillStyle = "#000";
-	context.font = "16px Arial";
-	context.fillText("Press ENTER to Start!", 140, 328);
-
-    if (keyboard.isKeyDown(keyboard.KEY_ESCAPE) == true)
-    {
+    //Menu Timer
+    menuTimer -= deltaTime;
+    if (menuTimer <= 0) {
         gameState = STATE_GAME;
     }
+
+
 }
 function runGame(deltaTime) {
 }
