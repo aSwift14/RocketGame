@@ -24,6 +24,7 @@ Player.prototype.update = function(deltaTime)
 	var left = false;
 	var right = false;
 	var up = false;
+	var down = false;
 	var space = false;
 	var falling;
 	var PLAYER_SPEED = 2;
@@ -49,6 +50,12 @@ Player.prototype.update = function(deltaTime)
 		this.image.src = "Rocket1.png";
 		falling = true;
 	}
+	
+	if((keyboard.isKeyDown(keyboard.KEY_DOWN) == true)  || (keyboard.isKeyDown(keyboard.KEY_S) == true))
+	{
+		down = true;
+		this.image.src = "Rocket3.png";
+	}
 				
 	if(keyboard.isKeyDown(keyboard.KEY_SPACE) == true)
 	{
@@ -68,6 +75,9 @@ Player.prototype.update = function(deltaTime)
 	}
 	if (up == true) {
 		this.position.y -= PLAYER_SPEED * ROCKET_SPEED;
+	}
+	if (down == true) {
+		this.position.y += PLAYER_SPEED * ROCKET_SPEED;
 	}
 	
 // Position Boundaries
