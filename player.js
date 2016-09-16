@@ -1,6 +1,6 @@
 var Player = function() {
 	this.image = document.createElement("img");
-
+	
 	this.position = new Vector2();
 	this.position.set(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 	
@@ -11,7 +11,7 @@ var Player = function() {
 	this.offset.set(-159,-163);
 	
 	this.image.src = "Rocket1.png";
-	
+		
 	this.velocity = new Vector2();
 	
 };
@@ -80,6 +80,7 @@ Player.prototype.update = function(deltaTime)
 		this.position.y += PLAYER_SPEED * ROCKET_SPEED;
 	}
 	
+	
 // Position Boundaries
 	if (this.position.x <= 0) {
 		this.position.x = 0;
@@ -99,6 +100,7 @@ Player.prototype.update = function(deltaTime)
 	this.position.y = Math.floor(this.position.y + (deltaTime * this.velocity.y));
 	this.position.x = Math.floor(this.position.x + (deltaTime * this.velocity.x));
 		
+	
 }
 	
 Player.prototype.draw = function()
