@@ -24,6 +24,7 @@ var gameState = STATE_MENUSCREEN;
     var menuTimer = 3;
 
 //Game Variables
+var background = new background();
 var player = new Player();
 var keyboard = new Keyboard();
 
@@ -41,7 +42,7 @@ function getDeltaTime() {
 }
 
 // Run Statement
-function run () {
+function run () {	
     context.fillStyle = "#ccc";
     context.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
@@ -53,7 +54,7 @@ function run () {
             runMainMenu(deltaTime);
             break;
         case STATE_GAME:
-            runGame(deltaTime);
+            runGame(deltaTime);			
             break;
         case STATE_GAMEOVER:
             runGameOver(deltaTime);
@@ -84,6 +85,7 @@ function runMainMenu(deltaTime) {
 }
 function runGame(deltaTime) {
     console.log("am i working?")
+	background.draw();
     player.update(deltaTime);
     player.draw();
 }
