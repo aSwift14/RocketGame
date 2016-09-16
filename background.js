@@ -4,8 +4,8 @@ var background = function() {
 	this.position = new Vector2();
 	this.position.set(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 	
-	this.width = 640;
-	this.height = 480;
+	this.width = 480;
+	this.height = 640;
 	
 	this.offset = new Vector2();
 	this.offset.set(-159,-163);
