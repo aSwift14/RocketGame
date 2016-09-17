@@ -20,10 +20,11 @@ var STATE_UPGRADEMENU = 3;
 
 var gameState = STATE_MENUSCREEN;
 
-    //Timers
-    var menuTimer = 3;
+//Timers
+var menuTimer = 3;
 
 //Game Variables
+var menuimage = new menuimage();
 var background = new background();
 var player = new Player();
 var keyboard = new Keyboard();
@@ -37,7 +38,7 @@ function rand(floor, ceil) {
 }
 
 //Asteroid Variables
-var ASTEROID_SPEED = rand(30, 60);
+var ASTEROID_SPEED = rand(3, 6);
 var spawnTimer = 0;
 
 //Get DeltaTime
@@ -160,14 +161,10 @@ function animate() {
 
 function runMainMenu(deltaTime) {
     //Background
-    context.fillStyle = "#ccc";
-    context.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-
-    //Text
-    context.fillStyle = "#000";
-	context.font = "24px Arial";
-	context.fillText("Rocket Game", 140, 300);
-
+	
+	menuimage.draw();
+	
+	
     //Menu Timer
     menuTimer -= deltaTime;
     if (menuTimer <= 0) {
