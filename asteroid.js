@@ -1,3 +1,6 @@
+var canvas = document.getElementById("gameCanvas");
+var context = canvas.getContext("2d");
+
 // newly spawned objects start at Y=25
 var spawnLineY = -10;
 
