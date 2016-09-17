@@ -37,7 +37,7 @@ function rand(floor, ceil) {
 }
 
 //Asteroid Variables
-var ASTEROID_SPEED = rand(30, 60);
+var ASTEROID_SPEED = rand(3, 6);
 var spawnTimer = 0;
 
 //Get DeltaTime
