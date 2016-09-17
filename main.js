@@ -28,6 +28,18 @@ var background = new background();
 var player = new Player();
 var keyboard = new Keyboard();
 
+//Create array for Asteroid
+var asteroids = [];
+
+//Random Number for Asteroid Spawning
+function rand(floor, ceil) {
+    return Math.floor((Math.random() * (ceil - floor)) + floor);
+}
+
+//Asteroid Variables
+var ASTEROID_SPEED = rand(30, 60);
+var spawnTimer = 0;
+
 //Get DeltaTime
 function getDeltaTime() {
 	endFrameMillis = startFrameMillis;
@@ -88,6 +100,8 @@ function runGame(deltaTime) {
 	background.draw();
     player.update(deltaTime);
     player.draw();
+    spawnAsteroid(deltaTime);
+    asteroidChecks(deltaTime);
 }
 function runGameOver(deltaTime) {
 }
