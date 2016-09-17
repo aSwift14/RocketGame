@@ -1,87 +1,91 @@
-//Intersect Function
-function intersects(x1, y1, w1, h1, x2, y2, w2, h2) {
-    if (y2 + h2 < y1 ||
-        x2 + w2 < x1 ||
-        x2 > x1 + w1 ||
-        y2 > y1 + h1) {
-        return false;
+// newly spawned objects start at Y=25
+var spawnLineY = -10;
+
+// spawn a new object every 1500ms
+var spawnRate = 1500;
+
+// set how fast the objects will fall
+var spawnRateOfDescent = 0.50;
+
+// when was the last object spawned
+var lastSpawn = -1;
+
+// this array holds all spawned object
+var objects = [];
+
+// save the starting time (used to calc elapsed time)
+var startTime = Date.now();
+
+// start animating
+animate();
+
+
+function spawnRandomObject() {
+
+    // select a random type for this new object
+    var t;
+
+    // About Math.random()
+    // Math.random() generates a semi-random number
+    // between 0-1. So to randomly decide if the next object
+    // will be A or B, we say if the random# is 0-.49 we
+    // create A and if the random# is .50-1.00 we create B
+
+    if (Math.random() < 0.50) {
+        t = "red";
+    } else {
+        t = "blue";
     }
-    return true;
+
+    // create the new object
+    var object = {
+        // set this objects type
+        type: t,
+        // set x randomly but at least 15px off the canvas edges
+        x: Math.random() * (canvas.width - 30) + 15,
+        // set y to start on the line where objects are spawned
+        y: spawnLineY,
+    }
+
+    // add the new object to the objects[] array
+    objects.push(object);
 }
 
-//Spawn Asteroids
-function spawnAsteroid(deltaTime) {
-    //Make Size of Asteroid Different
-    var type = rand(0, 3);
-
-    //Create Asteroid
-    var asteroid = {};
-
-    asteroid.image = document.createElement("img");
-    asteroid.image.src = "asteroid.png";
-    asteroid.width = 64;
-    asteroid.height = 64;
 
 
-    //Set Random direction
-    var x = SCREEN_WIDTH / 2;
-    var y = SCREEN_HEIGHT / 2;
+function animate() {
 
-    var dirX = rand(-10, 10);
-    var dirY = rand(-10, 10);
+    // get the elapsed time
+    var time = Date.now();
 
-    //Normalize direction
-    var magnitude = (dirX * dirX) + (dirY * dirY);
-    if (magnitude != 0) {
-        var oneOverMag = 1 / Math.sqrt(magnitude);
-        dirX *= oneOverMag;
-        dirY *= oneOverMag;
-    }
-    //Multiply the dirX/Y by the screen width to move that amount from 
-    //the centre of the screen
-    var movX = dirX * SCREEN_WIDTH;
-    var movY = dirY * SCREEN_HEIGHT;
-
-    //Add the direction
-    asteroid.x = x + movX;
-    asteroid.y = y + movY;
-
-    //Set Move Speed
-    asteroid.velocityX = -dirX * ASTEROID_SPEED;
-    asteroid.velocityY = -dirY * ASTEROID_SPEED;
-
-    //Push to end of array
-    asteroids.push(asteroid);
-
-}
-// Checks for Asteroid
-function asteroidChecks (deltaTime) {
-    //Update Asteroids in array
-    for (var i = 0; i < asteroids.length; i++) {
-        //Update Asteroids Position According to Velocity
-        asteroids[i].x = asteroids[i].x + asteroids[i].velocityX * deltaTime;
-        asteroids[i].y = asteroids[i].y + asteroids[i].velocityY * deltaTime;
-
-        //TODO : Check if Asteroid = Out of Bonds, if so, comes back from other side.
-    }
-    // Draw All Asteroids
-    for (var i = 0; i < asteroids.length; i++) {
-        context.drawImage(asteroids[i].image, asteroids[i].x - asteroids[i].width / 2, asteroids[i].y - asteroids[i].height / 2);
-    }
-    spawnTimer -= deltaTime;
-    if (spawnTimer <= 0) {
-        spawnTimer = 1;
-        spawnAsteroid();
+    // see if its time to spawn a new object
+    if (time > (lastSpawn + spawnRate)) {
+        lastSpawn = time;
+        spawnRandomObject();
     }
 
-    //Check for Collision - Asteroid with Player
-    for (var i = 0; i < asteroids.length; i++) {
-        if (intersects(
-            player.x - player.width / 2, player.y - player.height / 2,
-            player.width, player.height,
-            asteroids[i].x - asteroids[i].width / 2, asteroids[i].y - asteroids[i].height / 2,
-            asteroids[i].width, asteroids[i].height) == true) {
-            }
-            break;
-}
+    // request another animation frame
+    requestAnimationFrame(animate);
+
+    // clear the canvas so all objects can be 
+    // redrawn in new positions
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    // draw the line where new objects are spawned
+    context.beginPath();
+    context.moveTo(0, spawnLineY);
+    context.lineTo(canvas.width, spawnLineY);
+    context.stroke();
+
+    // move each object down the canvas
+    for (var i = 0; i < objects.length; i++) {
+        var object = objects[i];
+        object.y += spawnRateOfDescent;
+        context.beginPath();
+        context.arc(object.x, object.y, 8, 0, Math.PI * 2);
+        context.closePath();
+        context.fillStyle = object.type;
+        context.fill();
+    }
+
 }
