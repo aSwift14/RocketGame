@@ -1,26 +1,4 @@
-/***************
- * PART ONE - Setting up the structure of the game and panning 
- * a background
- ***************/
-
-/* NOTES TO REMEMBER
- * 1. A variable declared private (with the var syntax) cannot be referenced from a public function declared with the prototype syntax
- * 2. Drawing an image once does not keep it on the canvas (it disapears for some reason). REASON - the image is not loaded when the 
- *    call to draw it is called, so nothing is drawn.
- * 3. A vairable declared public (with the this syntax) must always be referenced with the this syntax when using it
- */
- 
-/* RESOURCES
- * 1. http://paulirish.com/2011/requestanimationframe-for-smart-animating/
- * 2. http://net.tutsplus.com/tutorials/javascript-ajax/prototypes-in-javascript-what-you-need-to-know/
- * 3. http://phrogz.net/js/classes/OOPinJS.html
- * 4. http://www.phpied.com/3-ways-to-define-a-javascript-class/
- */
-
-
-/**
- * Initialize the Game and starts it.
- */
+ Initialize the Game and starts it.
 var game = new Game();
 
 function init() {
@@ -28,11 +6,8 @@ function init() {
 		game.start();
 }
 
-/**
- * Define an object to hold all our images for the game so images
- * are only ever created once. This type of object is known as a 
- * singleton.
- */
+//Define an object to hold all our images for the game so
+//images are only ever created once. This type of object is known as a singleton.
 var imageRepository = new function() {
 	// Define images
 	this.empty = null;
