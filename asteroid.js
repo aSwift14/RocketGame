@@ -8,7 +8,7 @@ var spawnLineY = -10;
 var spawnRate = 1500;
 
 // set how fast the objects will fall
-var spawnRateOfDescent = 0.05;
+var spawnRateOfDescent = 0.50;
 
 // when was the last object spawned
 var lastSpawn = -1;
@@ -20,9 +20,8 @@ var objects = [];
 var startTime = Date.now();
 
 // start animating
-window.onload = function() {
-    animate();
-}
+animate();
+
 
 function spawnRandomObject() {
 
@@ -83,9 +82,13 @@ function animate() {
 
     // move each object down the canvas
     for (var i = 0; i < objects.length; i++) {
-    	var object = objects[i];
-    	object.y += spawnRateOfDescent;
-    	context.drawImage(object.image, object.x, object.y, 30, 30);
-}
+        var object = objects[i];
+        object.y += spawnRateOfDescent;
+        context.beginPath();
+        context.arc(object.x, object.y, 8, 0, Math.PI * 2);
+        context.closePath();
+        context.fillStyle = object.type;
+        context.fill();
+    }
 
 }
