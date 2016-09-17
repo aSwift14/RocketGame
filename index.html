@@ -1,21 +1,16 @@
-<!DOCTYPE html>
 <html>
-	<head>
-		<title>Space Shooter Demo</title>
-		<style>
-			canvas {
-				position: absolute;
-				top: 0px;
-				left: 0px;
-				background: transparent;
-			}
-		</style>
-	</head>
-	<body onload="init()">
-		<!-- The canvas for the panning background -->
-		<canvas id="background" width="600" height="360">
-			Your browser does not support canvas. Please try again with a different browser.
-		</canvas>
-		<script src="background.js"></script>
-	</body>
+
+<body>
+	<canvas id="gameCanvas" width="480" height="640">
+		This text is displayed if your browser does not support HTML5.
+	</canvas>
+    <script src="vector2.js"></script>
+	<script src="Background.js"></script>
+	<script src="keyboard.js"></script>
+	<script src="player.js"></script>
+	<script src="sprite.js"></script>
+	<script src="asteroid.js"></script>
+	<script src="main.js"></script>
+</body>
+
 </html>
