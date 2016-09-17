@@ -80,10 +80,10 @@ function run () {
 var spawnLineY = -10;
 
 // spawn a new object every 1500ms
-var spawnRate = 1500;
+var spawnRate = 1000;
 
 // set how fast the objects will fall
-var spawnRateOfDescent = 0.05;
+var spawnRateOfDescent = 0.5;
 
 // when was the last object spawned
 var lastSpawn = -1;
@@ -127,7 +127,7 @@ function spawnRandomObject() {
 
 
 
-function animate(deltaTime) {
+function animate() {
 
     // get the elapsed time
     var time = Date.now();
@@ -138,9 +138,6 @@ function animate(deltaTime) {
         spawnRandomObject();
     }
 
-    // request another animation frame
-    requestAnimationFrame(animate);
-
     // draw the line where new objects are spawned
     context.beginPath();
     context.moveTo(0, spawnLineY);
@@ -150,12 +147,13 @@ function animate(deltaTime) {
     // move each object down the canvas
     for (var i = 0; i < objects.length; i++) {
         var object = objects[i];
-        object.y += spawnRateOfDescent;
         context.beginPath();
         context.arc(object.x, object.y, 8, 0, Math.PI * 2);
         context.closePath();
         context.fillStyle = object.type;
         context.fill();
+
+        object.y += spawnRateOfDescent;
     }
 
 }
@@ -182,7 +180,7 @@ function runGame(deltaTime) {
 	background.draw();
     player.update(deltaTime);
     player.draw();
-    animate(deltaTime);
+    animate();
 }
 function runGameOver(deltaTime) {
 }
