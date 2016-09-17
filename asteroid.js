@@ -22,6 +22,7 @@ function spawnAsteroid(deltaTime) {
     asteroid.width = 64;
     asteroid.height = 64;
 
+
     //Set Random direction
     var x = SCREEN_WIDTH / 2;
     var y = SCREEN_HEIGHT / 2;

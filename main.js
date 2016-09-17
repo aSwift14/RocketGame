@@ -96,12 +96,10 @@ function runMainMenu(deltaTime) {
 
 }
 function runGame(deltaTime) {
-    console.log("am i working?")
+    asteroidChecks(deltaTime);
 	background.draw();
     player.update(deltaTime);
     player.draw();
-    spawnAsteroid(deltaTime);
-    asteroidChecks(deltaTime);
 }
 function runGameOver(deltaTime) {
 }
